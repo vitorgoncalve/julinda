@@ -1,0 +1,462 @@
+
+/* =====================================
+   CONFIGURAÇÕES GERAIS
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Georgia', serif;
+
+    background: linear-gradient(
+        135deg,
+        #170b2e,
+        #38165d,
+        #58258a,
+        #24103f
+    );
+
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow-x: hidden;
+    padding: 40px 20px;
+}
+
+/* =====================================
+   DECORAÇÕES DO FUNDO
+===================================== */
+
+.decoracao span {
+    position: fixed;
+    color: rgba(255, 255, 255, 0.12);
+    font-size: 35px;
+    animation: flutuar 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.decoracao span:nth-child(1) {
+    top: 10%;
+    left: 10%;
+}
+
+.decoracao span:nth-child(2) {
+    top: 25%;
+    right: 12%;
+}
+
+.decoracao span:nth-child(3) {
+    bottom: 15%;
+    left: 15%;
+}
+
+.decoracao span:nth-child(4) {
+    bottom: 25%;
+    right: 10%;
+}
+
+.decoracao span:nth-child(5) {
+    top: 60%;
+    left: 5%;
+}
+
+@keyframes flutuar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* =====================================
+   CONTEÚDO PRINCIPAL
+===================================== */
+
+.container {
+    width: 100%;
+    max-width: 850px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* =====================================
+   CABEÇALHO
+===================================== */
+
+.cabecalho {
+    margin-bottom: 35px;
+}
+
+.subtitulo {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #dcbaff;
+}
+
+h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: normal;
+    margin-top: 20px;
+    color: #fff0ff;
+    line-height: 1.3;
+}
+
+h1 span {
+    color: #ffb5e8;
+}
+
+.descricao {
+    margin-top: 15px;
+    font-size: 15px;
+    color: #e4cbed;
+    line-height: 1.7;
+}
+
+.linha-decorativa {
+    margin: 20px auto 0;
+    width: 120px;
+    border-bottom: 1px solid rgba(255,255,255,0.35);
+    position: relative;
+    color: #ffb5e8;
+}
+
+.linha-decorativa span {
+    position: relative;
+    top: 10px;
+    background: #38165d;
+    padding: 0 12px;
+}
+
+/* =====================================
+   ÁLBUM
+===================================== */
+
+.album {
+    width: 100%;
+    max-width: 540px;
+    margin: auto;
+    padding: 18px;
+
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.35),
+        inset 0 0 20px rgba(255,255,255,0.04);
+
+    backdrop-filter: blur(12px);
+}
+
+.album-topo,
+.album-rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #edc9ff;
+}
+
+.album-topo {
+    margin-bottom: 15px;
+}
+
+.album-rodape {
+    margin-top: 15px;
+    color: #eec9ff;
+}
+
+/* =====================================
+   CARROSSEL
+===================================== */
+
+.carrossel {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+    border-radius: 12px;
+
+    background: #24103f;
+    position: relative;
+}
+
+.fotos {
+    display: flex;
+
+    width: 600%;
+    height: 100%;
+
+    animation: passarFotos 30s infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.foto {
+    width: calc(100% / 6);
+    height: 100%;
+
+    flex: 0 0 calc(100% / 6);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.5s ease;
+}
+
+.foto:hover img {
+    transform: scale(1.04);
+}
+
+/* =====================================
+   LEGENDAS DAS FOTOS
+===================================== */
+
+.legenda {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    padding: 25px 12px 18px;
+
+    background: linear-gradient(
+        transparent,
+        rgba(20, 5, 35, 0.85)
+    );
+
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+/* =====================================
+   ANIMAÇÃO AUTOMÁTICA DAS 6 FOTOS
+===================================== */
+
+@keyframes passarFotos {
+
+    /* FOTO 1 */
+    0%, 14% {
+        transform: translateX(0);
+    }
+
+    /* TRANSIÇÃO PARA FOTO 2 */
+    16.66%, 30% {
+        transform: translateX(-16.6667%);
+    }
+
+    /* FOTO 3 */
+    33.33%, 47% {
+        transform: translateX(-33.3333%);
+    }
+
+    /* FOTO 4 */
+    50%, 64% {
+        transform: translateX(-50%);
+    }
+
+    /* FOTO 5 */
+    66.66%, 80% {
+        transform: translateX(-66.6667%);
+    }
+
+    /* FOTO 6 */
+    83.33%, 97% {
+        transform: translateX(-83.3333%);
+    }
+
+    /* REINICIAR CARROSSEL */
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* PAUSAR CARROSSEL AO PASSAR O MOUSE */
+
+.carrossel:hover .fotos {
+    animation-play-state: paused;
+}
+
+/* =====================================
+   MENSAGEM ESPECIAL
+===================================== */
+
+.mensagem {
+    max-width: 540px;
+    margin: 35px auto 0;
+    padding: 30px 25px;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 16px;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+
+    backdrop-filter: blur(12px);
+}
+
+.mensagem-icon {
+    font-size: 35px;
+    color: #ffb5e8;
+    margin-bottom: 12px;
+}
+
+.mensagem h2 {
+    font-size: 25px;
+    font-weight: normal;
+    color: #fff0ff;
+    margin-bottom: 20px;
+}
+
+.mensagem p {
+    font-size: 14px;
+    color: #e8d5f5;
+    line-height: 1.9;
+    margin-bottom: 15px;
+}
+
+.assinatura {
+    display: block;
+    margin-top: 25px;
+
+    color: #ffb5e8;
+    font-size: 16px;
+    font-style: italic;
+}
+
+/* =====================================
+   RODAPÉ
+===================================== */
+
+footer {
+    margin-top: 35px;
+    color: #e4cbed;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.coracao {
+    display: inline-block;
+
+    font-size: 28px;
+    color: #ffb5e8;
+    margin-top: 10px;
+
+    animation: pulsar 1.5s infinite;
+}
+
+@keyframes pulsar {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+/* =====================================
+   RESPONSIVIDADE PARA CELULAR
+===================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 35px 15px;
+    }
+
+    .cabecalho {
+        margin-bottom: 25px;
+    }
+
+    .subtitulo {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin-top: 15px;
+    }
+
+    .descricao {
+        font-size: 13px;
+        padding: 0 10px;
+    }
+
+    .album {
+        padding: 12px;
+        border-radius: 14px;
+    }
+
+    .carrossel {
+        aspect-ratio: 4 / 5;
+    }
+
+    .legenda {
+        font-size: 13px;
+        padding: 20px 8px 13px;
+    }
+
+    .album-topo,
+    .album-rodape {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .mensagem {
+        padding: 25px 18px;
+        margin-top: 25px;
+    }
+
+    .mensagem h2 {
+        font-size: 22px;
+    }
+
+    .mensagem p {
+        font-size: 13px;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 0 10px;
+    }
+}
+
+/* =====================================
+   ACESSIBILIDADE
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .fotos,
+    .decoracao span,
+    .coracao {
+        animation: none;
+    }
+}
